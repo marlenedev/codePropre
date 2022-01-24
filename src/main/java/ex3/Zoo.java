@@ -10,20 +10,27 @@ public class Zoo {
 	
 	public Zoo(String nom){
 		this.nom = nom;
-	}
+		this.aquarium= new Aquarium();
+		this.fermeReptile = new FermeReptile();
+		this.savaneAfricaine = new SavaneAfricaine();
+		this.zoneCarnivore = new ZoneCarnivore();
+		}
 	
-	public void addAnimal(String nomAnimal, String typeAnimal, String comportement){
-		if (typeAnimal.equals("MAMMIFERE") && comportement.equals("CARNIVORE")){
-			zoneCarnivore.addAnimal(typeAnimal, nomAnimal, comportement);
+	public void addAnimal(String nomAnimal, Type typeAnimal, Comportement comportement){
+		
+		Animal animal = new Animal(typeAnimal,nomAnimal,comportement);
+		
+		if (typeAnimal.equals(Type.MAMMIFERE) && comportement.equals(Comportement.CARNIVORE)){
+			zoneCarnivore.addAnimal(animal);
 		}
-		else if (typeAnimal.equals("MAMMIFERE") && comportement.equals("HERBIVORE")){
-			savaneAfricaine.addAnimal(typeAnimal, nomAnimal, comportement);
+		else if (typeAnimal.equals(Type.MAMMIFERE) && comportement.equals(Comportement.HERBIVORE)){
+			savaneAfricaine.addAnimal(animal);
 		}
-		else if (typeAnimal.equals("REPTILE")){
-			fermeReptile.addAnimal(typeAnimal, nomAnimal, comportement);
+		else if (typeAnimal.equals(Type.REPTILE)){
+			fermeReptile.addAnimal(animal);
 		}
-		else if (typeAnimal.equals("POISSON")){
-			aquarium.addAnimal(typeAnimal, nomAnimal, comportement);
+		else if (typeAnimal.equals(Type.POISSON)){
+			aquarium.addAnimal(animal);
 		}
 	}
 	
@@ -34,17 +41,49 @@ public class Zoo {
 		aquarium.afficherListeAnimaux();
 	}
 
-	/** Getter for nom
-	 * @return the nom
-	 */
+	
+	//Getter et SEtter
 	public String getNom() {
 		return nom;
 	}
 
-	/** Setter
-	 * @param nom the nom to set
-	 */
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+
+	public SavaneAfricaine getSavaneAfricaine() {
+		return savaneAfricaine;
+	}
+
+	public void setSavaneAfricaine(SavaneAfricaine savaneAfricaine) {
+		this.savaneAfricaine = savaneAfricaine;
+	}
+
+	public ZoneCarnivore getZoneCarnivore() {
+		return zoneCarnivore;
+	}
+
+	public void setZoneCarnivore(ZoneCarnivore zoneCarnivore) {
+		this.zoneCarnivore = zoneCarnivore;
+	}
+
+	public FermeReptile getFermeReptile() {
+		return fermeReptile;
+	}
+
+	public void setFermeReptile(FermeReptile fermeReptile) {
+		this.fermeReptile = fermeReptile;
+	}
+
+	public Aquarium getAquarium() {
+		return aquarium;
+	}
+
+	public void setAquarium(Aquarium aquarium) {
+		this.aquarium = aquarium;
+	}
+
+
+	
+	
 }
